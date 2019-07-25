@@ -1,0 +1,26 @@
+//breakpoints (max-width)
+$breakpoints: (
+  'xs': 'screen and (max-width: 345px)',
+  'sm': 'screen and (max-width: 400px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1000px)',
+  'xl': 'screen and (max-width: 1200px)',
+) !default;
+
+//breakpoints (min-width)
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 401px)',
+  'md': 'screen and (min-width: 769px)',
+  'lg': 'screen and (min-width: 1001px)',
+  'xl': 'screen and (min-width: 1201px)',
+) !default;
+
+//font
+$notera: 'Notera Personal Use Only', serif;
+$sans: Arial, 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+Roboto, 'Helvetica Neue', sans-serif;
+
+//color
+$main-color: #b7d432;
+$bg-section: #E3E3E3;
+$danger: #C12020;

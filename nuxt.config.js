@@ -35,7 +35,22 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/style-resources',
+    'nuxt-webfontloader',
   ],
+
+  styleResources: {
+    // your settings here
+    sass: ['~assets/sass/app.scss'], // alternative: scss
+    less: [],
+    stylus: []
+  },
+
+  webfontloader: {
+    google: {
+      families: ['Josefin+Sans']
+    }
+  },
   /*
   ** Build configuration
   */
