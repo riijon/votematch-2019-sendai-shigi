@@ -1,0 +1,20 @@
+{
+  "name": "votematch-2019-sendai-shigi",
+  "version": "1.0.0",
+  "description": "My magnificent Nuxt.js project",
+  "author": "Riku Takenaka",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "element-ui": "^2.4.11",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
