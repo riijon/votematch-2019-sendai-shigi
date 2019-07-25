@@ -1,13 +1,30 @@
 <template>
   <div class="container">
     <div>
-      <logo />
-      <h1 class="title">
-        votematch-2019-sendai-shigi
-      </h1>
+      <table>
+        <thead>
+        <tr>
+          <th>名前</th>
+          <th>ふりがな</th>
+          <th>Q1</th>
+          <th>Q2</th>
+          <th>Q3</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="json in jsonAll" :key="json.id">
+          <td>{{json.name}}</td>
+          <td>{{json.hurigana}}</td>
+          <td>{{json.q1}}</td>
+          <td>{{json.q2}}</td>
+          <td>{{json.q3}}</td>
+        </tr>
+        </tbody>
+      </table>
       <h2 class="subtitle">
         My magnificent Nuxt.js project
       </h2>
+      <el-checkbox v-model="checked">Option</el-checkbox>
       <div class="links">
         <a
           href="https://nuxtjs.org/"
@@ -29,12 +46,18 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  }
+  components: {},
+  data() {
+    return {
+      checked: false
+    }
+  },
+  asyncData({store}) {
+    return {
+      jsonAll: store.getters['json/getAll']
+    }
+  },
 }
 </script>
 
