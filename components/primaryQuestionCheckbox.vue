@@ -3,9 +3,9 @@
     <el-checkbox-group v-model="internalValue" :max="3">
       <el-checkbox
         v-for="(policy, index) in primaryPolicies"
-        :label="policy"
+        :label="index"
         :key="policy"
-      ></el-checkbox>
+      >{{policy}}</el-checkbox>
     </el-checkbox-group>
   </div>
 </template>
