@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>{{question.title}}</p>
+    <p v-if="question.description">{{question.description}}</p>
     <el-radio-group v-model="internalValue">
       <el-radio
         v-for="(answer, i) in question.answers"
