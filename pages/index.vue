@@ -22,6 +22,14 @@
       :key="`policy${i}`"
     />
 
+    <h4>最後に、あなたが仙台市議会に求める「特に重視する政策」を、３つまで選んでください</h4>
+    <span>（選ばなかった政策を重視しないということではなく、最も重要と考えるものを３つ選んでください）</span>
+
+    <primary-question-checkbox
+      v-model="form.primary"
+      :primary-policies="questions.primary"
+    />
+
     <el-button type="primary" :loading="loading" @click="check">診断する</el-button>
 
     <pre>{{result}}</pre>
@@ -31,9 +39,10 @@
 <script>
   import PolicyQuestionRadio from "../components/PolicyQuestionRadio";
   import AreaQuestionRadio from "../components/AreaQuestionRadio";
+  import PrimaryQuestionCheckbox from "../components/primaryQuestionCheckbox";
 
   export default {
-    components: {AreaQuestionRadio, PolicyQuestionRadio},
+    components: {PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
     data() {
       return {
         questions: [],
@@ -41,7 +50,8 @@
         form: {
           area: null,
           idea: [],
-          policy: []
+          policy: [],
+          primary: []
         },
         loading: false,
         result: [],
