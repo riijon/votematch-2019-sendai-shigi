@@ -1,13 +1,21 @@
 <template>
-  <div>
-    <p>{{question.title}}</p>
-    <p v-if="question.description">{{question.description}}</p>
+  <div class="policy-question">
+    <p class="title">{{question.title}}</p>
+    <el-collapse
+      v-model="activeNames"
+      v-if="question.description"
+    >
+      <el-collapse-item title="補足説明を読む" name="1">
+        <div>{{question.description}}</div>
+      </el-collapse-item>
+    </el-collapse>
     <el-radio-group v-model="internalValue">
       <el-radio
         v-for="(answer, i) in question.answers"
         :label="i"
         :key="i"
-      >{{answer}}</el-radio>
+      >{{answer}}
+      </el-radio>
     </el-radio-group>
   </div>
 </template>
@@ -15,6 +23,11 @@
 <script>
   export default {
     name: "PolicyQuestionRadio",
+    data() {
+      return {
+        activeNames: []
+      }
+    },
     props: {
       value: {
         type: Number,
@@ -28,10 +41,10 @@
     },
     computed: {
       internalValue: {
-        get () {
+        get() {
           return this.value
         },
-        set (newVal) {
+        set(newVal) {
           if (this.value !== newVal) this.$emit('input', newVal)
         }
       }
@@ -40,8 +53,12 @@
 </script>
 
 <style scoped>
-  div {
-    padding: 10px;
+  .policy-question {
+    margin-bottom: 24px;
+  }
+
+  .title {
+    margin-bottom: 8px;
   }
 
   .el-radio {
@@ -51,6 +68,11 @@
 
   .el-radio-group, .el-radio, .el-radio >>> .el-radio__input {
     line-height: inherit;
+  }
+
+  .el-collapse {
+    border-top: inherit;
+    margin: -8px 0 10px;
   }
 </style>
 

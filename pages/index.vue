@@ -1,16 +1,12 @@
 <template>
   <div class="container">
-    <h2>最初に、あなたの選挙区を選んでください</h2>
-    <el-radio-group v-model="form.address">
-      <el-radio
-        v-for="(area, i) in areas"
-        :label="i"
-        :key="area"
-      >{{area}}
-      </el-radio>
-    </el-radio-group>
+    <h4>最初に、あなたの選挙区を選んでください</h4>
+    <area-question-radio
+      v-model="form.area"
+      :areas="areas"
+    />
 
-    <h2>あなたが政治に求める指向・信条についてお聞きします</h2>
+    <h4>あなたが政治に求める指向・信条についてお聞きします</h4>
     <policy-question-radio
       v-for="(questionIdea, i) in questions.idea"
       v-model="form.idea[i]"
@@ -18,7 +14,7 @@
       :key="`idea${i}`"
     />
 
-    <h2>次に、具体的な政策についてお聞きします</h2>
+    <h4>次に、具体的な政策についてお聞きします</h4>
     <policy-question-radio
       v-for="(questionPolicy, i) in questions.policy"
       v-model="form.policy[i]"
@@ -34,9 +30,10 @@
 
 <script>
   import PolicyQuestionRadio from "../components/PolicyQuestionRadio";
+  import AreaQuestionRadio from "../components/AreaQuestionRadio";
 
   export default {
-    components: {PolicyQuestionRadio},
+    components: {AreaQuestionRadio, PolicyQuestionRadio},
     data() {
       return {
         questions: [],
@@ -96,5 +93,10 @@
 <style>
   .container {
     margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  h4 {
+    margin-bottom: 16px;
   }
 </style>
