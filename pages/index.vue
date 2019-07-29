@@ -31,8 +31,9 @@
     />
 
     <el-button type="primary" :loading="loading" @click="check">診断する</el-button>
+    <nuxt-link :to="{ name: 'candidate-answers' }">診断せずに候補者の回答を見る</nuxt-link>
 
-    <pre>{{result}}</pre>
+    <result :candidates="result" />
   </div>
 </template>
 
@@ -40,9 +41,11 @@
   import PolicyQuestionRadio from "../components/PolicyQuestionRadio";
   import AreaQuestionRadio from "../components/AreaQuestionRadio";
   import PrimaryQuestionCheckbox from "../components/primaryQuestionCheckbox";
+  import {db} from "~/plugins/firebase";
+  import Result from "../components/Result";
 
   export default {
-    components: {PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
+    components: {Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
     data() {
       return {
         questions: [],
@@ -55,6 +58,8 @@
         },
         loading: false,
         result: [],
+        isStore: false,
+        checked: false
       }
     },
     asyncData({store}) {
@@ -83,10 +88,16 @@
             }
           }
 
-          const rate = count / (candidate.q1.length + candidate.q2.length)
+          for (let i = 0; i < candidate.q3.length; i++) {
+            if (this.form.primary[i] === candidate.q3[i]) {
+              count++
+            }
+          }
+
+          const rate = count / (candidate.q1.length + candidate.q2.length + candidate.q3.length)
 
           result.push({
-            name: candidate.name,
+            ...candidate,
             rate: rate
           })
         })
@@ -95,6 +106,24 @@
         this.result = result.sort(function (a, b) {
           return b.rate - a.rate
         })
+
+        this.store()
+        this.checked = true
+      },
+
+      store() {
+        // firestoreにデータを保存
+        const answer = {
+          area: this.form.area,
+          idea: this.form.idea,
+          policy: this.form.policy,
+          primary: this.form.primary
+        }
+        const answersRef = db.collection('answers')
+        if (!this.isStore) {
+          answersRef.add(answer)
+          this.isStore = true
+        }
       }
     },
   }

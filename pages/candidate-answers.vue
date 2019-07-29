@@ -25,7 +25,6 @@
 
 <script>
   export default {
-    name: "result",
     asyncData({store}) {
       return {
         candidates: store.getters['candidates']
