@@ -39,7 +39,13 @@ export default {
   modules: [
     '@nuxtjs/style-resources',
     'nuxt-webfontloader',
+    'nuxt-basic-auth-module',
   ],
+
+  basic: {
+    name: 'coffee',
+    pass: 'house',
+  },
 
   styleResources: {
     // your settings here

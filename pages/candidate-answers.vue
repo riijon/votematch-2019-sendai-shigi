@@ -3,7 +3,7 @@
     <template v-for="idea in ideaAnswers">
       <h4 :key="idea.title">{{idea.title}}</h4>
       <el-table
-        :data="idea.answers"
+        :data="idea.candidateAnswers"
         style="width: 100%"
       >
         <el-table-column
@@ -28,52 +28,46 @@
 <script>
   export default {
     asyncData({store}) {
-      return {
-        candidates: store.getters['candidates']
-      }
-    },
-    data() {
-      return {
-        ideaAnswers: [
-          {
-            title: '経済の活性化について',
-            answers: [
-              {
-                question: '福祉の充実、雇用対策など、行政主導で経済を活性化させる',
-                "1": '○',
-                "2": ''
-              }, {
-                question: '税は安く、厳しいルールは撤廃して、民間の自由な取引で経済を活性化させる',
-                "1": '',
-                "2": '○'
-              }, {
-                question: 'どちらとも言えない',
-                "1": '',
-                "2": ''
-              }
-            ]
-          },
-          {
-            title: '男女の権利について',
-            answers: [
-              {
-                question: '男性も女性も、まったく同じ権利を得るべき',
-                "1": '○',
-                "2": '○'
-              }, {
-                question: '性差に合わせた、柔軟な権利を得るべき',
-                "1": '',
-                "2": ''
-              }, {
-                question: 'どちらとも言えない',
-                "1": '',
-                "2": ''
-              }
-            ]
+      const questions = store.getters['questions']
+      const candidates = store.getters['candidates']
+      const ideaAnswers = questions.idea.map((question, questionsIndex) => {
+        const candidateAnswers = question.answers.map((answer, answersIndex) => {
+          let candidateAnswer = {
+            question: answer
           }
-        ]
+          candidates.map(candidate => {
+            candidateAnswer[`${candidate.id}`] = candidate.q1[questionsIndex] === answersIndex ? '○' : '';
+          })
+          return candidateAnswer
+        })
+
+        return {
+          title: question.title,
+          candidateAnswers: candidateAnswers
+        }
+      })
+      const policyAnswers = questions.policy.map((question, questionsIndex) => {
+        const candidateAnswers = question.answers.map((answer, answersIndex) => {
+          let candidateAnswer = {
+            question: answer
+          }
+          candidates.map(candidate => {
+            candidateAnswer[`${candidate.id}`] = candidate.q2[questionsIndex] === answersIndex ? '○' : '';
+          })
+          return candidateAnswer
+        })
+
+        return {
+          title: question.title,
+          candidateAnswers: candidateAnswers
+        }
+      })
+
+      return {
+        candidates: candidates,
+        ideaAnswers: ideaAnswers,
       }
-    },
+    }
   }
 </script>
 
