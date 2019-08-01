@@ -5,6 +5,7 @@
     "hurigana": "たけなかりく",
     "image": "riku.jpg",
     "area": "青葉区",
+    "party": "無所属",
     "q1": [
       0,
       2,
@@ -40,6 +41,7 @@
     "hurigana": "かなもりなつみ",
     "image": "natsumi.jpg",
     "area": "宮城野区",
+    "party": "自民",
     "q1": [
       1,
       1,
