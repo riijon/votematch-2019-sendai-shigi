@@ -22,6 +22,28 @@
         </el-table-column>
       </el-table>
     </template>
+    <template v-for="policy in policyAnswers">
+      <h4 :key="policy.title">{{policy.title}}</h4>
+      <el-table
+        :data="policy.candidateAnswers"
+        style="width: 100%"
+      >
+        <el-table-column
+          fixed
+          prop="question"
+          label="質問"
+          width="150">
+        </el-table-column>
+        <el-table-column
+          fixed
+          v-for="candidate in candidates"
+          :key="candidate.id"
+          :prop="candidate.id.toString()"
+          :label="candidate.name"
+          width="100">
+        </el-table-column>
+      </el-table>
+    </template>
   </div>
 </template>
 
@@ -30,6 +52,7 @@
     asyncData({store}) {
       const questions = store.getters['questions']
       const candidates = store.getters['candidates']
+      // 政治志向についての回答を整形
       const ideaAnswers = questions.idea.map((question, questionsIndex) => {
         const candidateAnswers = question.answers.map((answer, answersIndex) => {
           let candidateAnswer = {
@@ -46,6 +69,8 @@
           candidateAnswers: candidateAnswers
         }
       })
+
+      // 政策についての回答を整形
       const policyAnswers = questions.policy.map((question, questionsIndex) => {
         const candidateAnswers = question.answers.map((answer, answersIndex) => {
           let candidateAnswer = {
@@ -66,6 +91,7 @@
       return {
         candidates: candidates,
         ideaAnswers: ideaAnswers,
+        policyAnswers: policyAnswers,
       }
     }
   }
