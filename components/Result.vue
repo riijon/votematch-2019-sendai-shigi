@@ -3,11 +3,11 @@
     <p>あなたにオススメの候補者は...</p>
     <el-row>
       <el-col
-        v-for="candidate in candidates"
+        v-for="(candidate, index) in candidates"
         :key="candidates.id"
         :xs="24" :md="8"
       >
-        <result-candidate-card :candidate="candidate" />
+        <result-candidate-card :candidate="candidate" :ranking="index + 1" />
       </el-col>
     </el-row>
   </div>
@@ -27,6 +27,8 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .el-col {
+    margin-bottom: 45px;
+  }
 </style>

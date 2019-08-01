@@ -11,5 +11,8 @@
 </script>
 
 <style scoped>
-
+  p {
+    font-size: 12px;
+    color: #99a9bf;
+  }
 </style>

@@ -30,10 +30,14 @@
       :primary-policies="questions.primary"
     />
 
-    <el-button type="primary" :loading="loading" @click="check">診断する</el-button>
-    <nuxt-link :to="{ name: 'candidate-answers' }">診断せずに候補者の回答を見る</nuxt-link>
+    <div class="check">
+      <el-button type="primary" :loading="loading" @click="check">診断する</el-button>
+      <div>
+        <nuxt-link :to="{ name: 'candidate-answers' }">診断せずに候補者の回答を見る</nuxt-link>
+      </div>
+    </div>
 
-    <result :candidates="result" />
+    <result :candidates="result" v-if="result.length" />
   </div>
 </template>
 
@@ -129,7 +133,7 @@
   }
 </script>
 
-<style>
+<style scoped lang="scss">
   .container {
     margin: 0 auto;
     padding: 0 15px;
@@ -137,5 +141,17 @@
 
   h4 {
     margin-bottom: 16px;
+  }
+
+  .check {
+    margin: 30px auto 45px;
+    text-align: center;
+    color: #606266;
+    font-weight: 500;
+    font-size: 14px;
+
+    button {
+      margin-bottom: 10px;
+    }
   }
 </style>
