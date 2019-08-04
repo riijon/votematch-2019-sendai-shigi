@@ -1,6 +1,11 @@
 @import "breakpoint";
 @import "variable";
 
+p, li, a, div {
+  color: $regular-text;
+  font-size: 14px;
+}
+
 ul {
   padding-left: 0;
 }

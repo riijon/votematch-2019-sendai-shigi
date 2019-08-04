@@ -18,7 +18,7 @@
     </el-row>
     <div class="rate">
       <span>マッチ度</span>
-      <el-progress :percentage="ratePercentage(candidate.rate)"></el-progress>
+      <el-progress :stroke-width="20" :percentage="ratePercentage(candidate.rate)"></el-progress>
     </div>
   </div>
 </template>

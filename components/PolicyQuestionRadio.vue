@@ -1,6 +1,6 @@
 <template>
   <div class="policy-question">
-    <p class="title">{{question.title}}</p>
+    <h4 class="title">{{question.title}}</h4>
     <el-collapse
       v-model="activeNames"
       v-if="question.description"
@@ -58,7 +58,8 @@
   }
 
   .title {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+    font-size: 16px;
   }
 
   .el-radio {

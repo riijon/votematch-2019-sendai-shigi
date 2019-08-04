@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="area-question-radio">
     <el-radio-group v-model="internalValue">
       <el-radio
         v-for="area in areas"
@@ -27,10 +27,10 @@
     },
     computed: {
       internalValue: {
-        get () {
+        get() {
           return this.value
         },
-        set (newVal) {
+        set(newVal) {
           if (this.value !== newVal) this.$emit('input', newVal)
         }
       }

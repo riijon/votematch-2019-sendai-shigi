@@ -40,6 +40,7 @@ export default {
     '@nuxtjs/style-resources',
     'nuxt-webfontloader',
     // 'nuxt-basic-auth-module',
+    'vue-scrollto/nuxt',
   ],
 
   basic: {
