@@ -26,7 +26,7 @@
     <section class="end">
       <div class="share">
         <p>仙台市議選2019ボートマッチをシェアして、<br>選挙をもっと盛り上げよう！</p>
-        <div>＜＜シェアボタン入る＞＞</div>
+        <sns-share-buttons title="title" />
       </div>
       <div class="caution">
         <p>診断は機械的なものなので、意外な結果になるかもしれません。また、無回答を選んだ設問がある候補者はマッチ率が低く表示される傾向があります。</p>
@@ -39,10 +39,11 @@
 
 <script>
   import ResultCandidateCard from "./ResultCandidateCard";
+  import SnsShareButtons from "./SnsShareButtons";
 
   export default {
     name: "Result",
-    components: {ResultCandidateCard},
+    components: {SnsShareButtons, ResultCandidateCard},
     data() {
       return {
         firstDisplayCandidates: 5,

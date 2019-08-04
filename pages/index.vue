@@ -31,12 +31,14 @@
     <div class="check">
       <el-button type="primary" :loading="loading" @click="check">診断する</el-button>
       <ul class="errors">
-        <li v-if="error" v-for="error in errors" :key="error">{{error}}</li>
+        <li v-if="error" v-for="error in validationErrors" :key="error">{{error}}</li>
       </ul>
       <div>
         <nuxt-link :to="{ name: 'candidate-answers' }">診断せずに候補者の回答を見る</nuxt-link>
       </div>
     </div>
+
+    <share-buttons title="title" />
 
     <div>
       <result :candidates="result" v-if="result.length"/>
@@ -50,9 +52,10 @@
   import PrimaryQuestionCheckbox from "../components/primaryQuestionCheckbox";
   import {db} from "~/plugins/firebase";
   import Result from "../components/Result";
+  import ShareButtons from "../components/SnsShareButtons";
 
   export default {
-    components: {Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
+    components: {ShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
     data() {
       return {
         questions: [],
@@ -63,12 +66,7 @@
           policy: [],
           primary: []
         },
-        errors: {
-          area: null,
-          idea: null,
-          policy: null,
-          primary: null
-        },
+        validationErrors: [],
         loading: false,
         result: [],
         isStore: false,
@@ -84,24 +82,22 @@
     },
     methods: {
       check() {
-        const result = []
-        this.clearValidation()
+        this.clearErrors()
 
         if (this.validation()) {
-          this.candidates.forEach(candidate => {
-            let count = 0
-
-            count += this.count(this.form.idea, candidate.q1)
-            count += this.count(this.form.policy, candidate.q2)
-            count += this.count(this.form.primary, candidate.q3)
-
-            const rate = count / (candidate.q1.length + candidate.q2.length + candidate.q3.length)
-
-            result.push({
-              ...candidate,
-              rate: rate
-            })
-          })
+          let result = []
+          if (this.form.area === 'わからない、区に関わらず調べたい') {
+            result = this.candidates.map(candidate => ({
+                  ...candidate,
+                  rate: this.rating(candidate)
+                }));
+          } else {
+            result = this.candidates.filter(candidate => candidate.area === this.form.area)
+                .map(candidate => ({
+                  ...candidate,
+                  rate: this.rating(candidate)
+                }));
+          }
 
           // rateの高い順に並び替え
           this.result = result.sort(function (a, b) {
@@ -110,8 +106,19 @@
 
           this.store()
           this.checked = true
-          setTimeout(this.scroll, 500)
+          setTimeout(this.scrollToResult, 800)
         }
+      },
+
+      // マッチ度の計算
+      rating(candidate) {
+        let count = 0
+
+        count += this.count(this.form.idea, candidate.q1)
+        count += this.count(this.form.policy, candidate.q2)
+        count += this.count(this.form.primary, candidate.q3)
+
+        return count / (candidate.q1.length + candidate.q2.length + candidate.q3.length)
       },
 
       // 利用者と候補者の回答を比較しマッチ数を返す
@@ -125,42 +132,52 @@
         return count
       },
 
-      scroll() {
+      scrollToResult() {
         this.$scrollTo('#result')
       },
 
       validation() {
         let response = true
+
         if (!this.form.area) {
-          this.errors.area = '選挙区を選択してください'
+          this.validationErrors.push('選挙区を選択してください')
           response = false
         }
 
-        if (this.form.idea.length < 7) {
-          this.errors.idea = 'Q1を全て選択してください'
+        if (this.form.idea.length < this.candidates[0].q1.length) {
+          this.validationErrors.push('Q1を全て選択してください')
           response = false
+        } else {
+          for (let i = 0; i < this.candidates[0].q1.length; i++) {
+            if (!this.form.idea.hasOwnProperty(i)) {
+              this.validationErrors.push('Q1を全て選択してください')
+              break
+            }
+          }
         }
 
-        if (this.form.policy.length < 11) {
-          this.errors.policy = 'Q2を全て選択してください'
+        if (this.form.policy.length < this.candidates[0].q2.length) {
+          this.validationErrors.push('Q2を全て選択してください')
           response = false
+        } else {
+          for (let i = 0; i < this.candidates[0].q2.length; i++) {
+            if (!this.form.policy.hasOwnProperty(i)) {
+              this.validationErrors.push('Q2を全て選択してください')
+              break
+            }
+          }
         }
 
-        if (this.form.primary.length < 3) {
-          this.errors.primary = 'Q3を全て選択してください'
+        if (this.form.primary.length < this.candidates[0].q3.length) {
+          this.validationErrors.push('Q3を全て選択してください')
           response = false
         }
 
         return response
       },
 
-      clearValidation() {
-        this.errors = {
-          area: null,
-          idea: null,
-          policy: null,
-          primary: null
-        }
+      clearErrors() {
+        this.validationErrors = []
       },
 
       store() {

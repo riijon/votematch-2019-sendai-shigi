@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=727427227437012&autoLogAppEvents=1"></script>
     <the-header />
     <nuxt />
     <the-footer />
@@ -10,7 +12,7 @@
   import TheHeader from "../components/TheHeader";
   import TheFooter from "../components/TheFooter";
   export default {
-    components: {TheFooter, TheHeader}
+    components: {TheFooter, TheHeader},
   }
 </script>
 
