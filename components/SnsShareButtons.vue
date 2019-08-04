@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-            src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=727427227437012&autoLogAppEvents=1"></script>
+  <div class="sns-share-buttons">
     <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3"
          data-url="https://votematch-2019-sendai-shigi.firebaseapp.com/" data-color="default" data-size="small"
          data-count="true" style="display: none;"></div>
@@ -20,10 +17,15 @@
 
 <script>
   export default {
-    name: "SnsShareButtons",
+    name: "SnsShareButtons"
   }
 </script>
 
 <style scoped lang="scss">
-
+  .sns-share-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    margin: 0 auto;
+  }
 </style>

@@ -26,7 +26,6 @@
     <section class="end">
       <div class="share">
         <p>仙台市議選2019ボートマッチをシェアして、<br>選挙をもっと盛り上げよう！</p>
-        <sns-share-buttons title="title" />
       </div>
       <div class="caution">
         <p>診断は機械的なものなので、意外な結果になるかもしれません。また、無回答を選んだ設問がある候補者はマッチ率が低く表示される傾向があります。</p>

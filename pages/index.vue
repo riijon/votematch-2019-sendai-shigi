@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=727427227437012&autoLogAppEvents=1"></script>
+
     <h4>◯ 最初に、あなたの選挙区を選んでください</h4>
     <area-question-radio
       v-model="form.area"
@@ -38,11 +42,11 @@
       </div>
     </div>
 
-    <share-buttons title="title" />
-
     <div>
       <result :candidates="result" v-if="result.length"/>
     </div>
+
+    <sns-share-buttons title="title" />
   </div>
 </template>
 
@@ -52,10 +56,10 @@
   import PrimaryQuestionCheckbox from "../components/primaryQuestionCheckbox";
   import {db} from "~/plugins/firebase";
   import Result from "../components/Result";
-  import ShareButtons from "../components/SnsShareButtons";
+  import SnsShareButtons from "../components/SnsShareButtons";
 
   export default {
-    components: {ShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
+    components: {SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
     data() {
       return {
         questions: [],
