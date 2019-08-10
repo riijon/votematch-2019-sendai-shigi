@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="candidate-answers">
     <template v-for="idea in ideaAnswers">
       <h4 :key="idea.title">{{idea.title}}</h4>
       <el-table
@@ -13,7 +13,6 @@
           width="150">
         </el-table-column>
         <el-table-column
-          fixed
           v-for="candidate in candidates"
           :key="candidate.id"
           :prop="candidate.id.toString()"
@@ -35,7 +34,6 @@
           width="150">
         </el-table-column>
         <el-table-column
-          fixed
           v-for="candidate in candidates"
           :key="candidate.id"
           :prop="candidate.id.toString()"
@@ -97,6 +95,12 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  .candidate-answers {
+    padding-left: 15px;
+  }
 
+  .el-table {
+    margin-bottom: 60px;
+  }
 </style>
