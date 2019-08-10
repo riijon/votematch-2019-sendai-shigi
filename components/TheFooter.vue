@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>Copyright © 2017 — TOHOKU360 × Mediage</p>
+    <p>Copyright © 2019 — TOHOKU360 × Mediage</p>
   </footer>
 </template>
 

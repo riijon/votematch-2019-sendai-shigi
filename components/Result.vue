@@ -132,5 +132,6 @@
   .returnTop {
     font-weight: bold;
     font-size: 12px;
+    margin-bottom: 15px;
   }
 </style>
