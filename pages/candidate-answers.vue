@@ -79,6 +79,10 @@
 
 <script>
   export default {
+    head: {
+      title: '候補者の回答'
+    },
+
     asyncData({store}) {
       const questions = store.getters['questions']
       const candidates = store.getters['candidates']

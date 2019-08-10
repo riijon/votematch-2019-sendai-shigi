@@ -67,6 +67,8 @@
   export default {
     components: {WhatVoteMatch, SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
     head: {
+      titleTemplate: null,
+      title: '仙台市議選ボートマッチ2019',
       script: [
         {
           src: 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=727427227437012&autoLogAppEvents=1',
