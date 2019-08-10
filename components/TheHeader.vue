@@ -1,8 +1,10 @@
 <template>
   <header>
-    <h2>
-      SENDAI VOTE MATCH 2019 <img src="/images/favicon.svg" alt="vote">
-    </h2>
+    <nuxt-link :to="{ name: 'index' }">
+      <h2>
+        SENDAI VOTE MATCH 2019 <img src="/images/favicon.svg" alt="vote">
+      </h2>
+    </nuxt-link>
   </header>
 </template>
 
@@ -32,5 +34,9 @@
       width: 20px;
       vertical-align: bottom;
     }
+  }
+
+  a {
+    text-decoration: none;
   }
 </style>
