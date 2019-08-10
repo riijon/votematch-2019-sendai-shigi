@@ -1,8 +1,13 @@
 <template>
   <div class="container">
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous"
-            src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=727427227437012&autoLogAppEvents=1"></script>
+
+    <div class="head-description">
+      <h3>アンケートに答えると、<br>あなたと立候補者の意見の一致度がわかります！</h3>
+      <el-button type="success" plain @click="dialogVisible = true">ボートマッチとは？</el-button>
+      <sns-share-buttons title="title" />
+      <what-vote-match v-model="dialogVisible" />
+    </div>
 
     <h4>◯ 最初に、あなたの選挙区を選んでください</h4>
     <area-question-radio
@@ -57,11 +62,23 @@
   import {db} from "~/plugins/firebase";
   import Result from "../components/Result";
   import SnsShareButtons from "../components/SnsShareButtons";
+  import WhatVoteMatch from "../components/WhatVoteMatch";
 
   export default {
-    components: {SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
+    components: {WhatVoteMatch, SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
+    head: {
+      script: [
+        {
+          src: 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v4.0&appId=727427227437012&autoLogAppEvents=1',
+          async: true,
+          defer: true,
+          crossorigin: "anonymous"
+        }
+      ]
+    },
     data() {
       return {
+        dialogVisible: false,
         questions: [],
         candidates: [],
         form: {
@@ -206,6 +223,19 @@
   .container {
     margin: 0 auto 30px;
     padding: 0 15px;
+  }
+
+  .head-description {
+    text-align: center;
+    margin-bottom: 45px;
+
+    h3 {
+      font-size: 15px;
+    }
+
+    button {
+      margin: 20px 0;
+    }
   }
 
   h4 {
