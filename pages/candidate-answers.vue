@@ -1,9 +1,10 @@
 <template>
   <div class="candidate-answers">
-    <template v-for="idea in ideaAnswers">
+    <template v-for="(idea, index) in ideaAnswers">
       <h4 :key="idea.title">{{idea.title}}</h4>
       <el-table
         :data="idea.candidateAnswers"
+        border
         style="width: 100%"
       >
         <el-table-column
@@ -17,6 +18,7 @@
           :key="candidate.id"
           :prop="candidate.id.toString()"
           :label="candidate.name"
+          align="center"
           width="100">
         </el-table-column>
       </el-table>
@@ -25,6 +27,7 @@
       <h4 :key="policy.title">{{policy.title}}</h4>
       <el-table
         :data="policy.candidateAnswers"
+        border
         style="width: 100%"
       >
         <el-table-column
@@ -38,10 +41,39 @@
           :key="candidate.id"
           :prop="candidate.id.toString()"
           :label="candidate.name"
+          align="center"
           width="100">
         </el-table-column>
       </el-table>
     </template>
+    <template>
+      <h4>優先政策</h4>
+      <el-table
+        :data="primaryAnswers"
+        border
+        style="width: 100%"
+      >
+        <el-table-column
+          fixed
+          prop="question"
+          label="質問"
+          width="150">
+        </el-table-column>
+        <el-table-column
+          v-for="candidate in candidates"
+          :key="candidate.id"
+          :prop="candidate.id.toString()"
+          :label="candidate.name"
+          align="center"
+          width="100">
+        </el-table-column>
+      </el-table>
+    </template>
+    <div class="back-top">
+      <nuxt-link :to="{ name: 'index' }">
+        <el-button type="info">ボートマッチトップへ戻る</el-button>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -86,10 +118,25 @@
         }
       })
 
+      // 優先政策についての回答を整形
+      const primaryAnswers = questions.primary.map((question, questionsIndex) => {
+        let candidateAnswer = {}
+        candidates.map(candidate => {
+          const a = candidate.q3.some(answer => answer === questionsIndex)
+          candidateAnswer[`${candidate.id}`] = a ? '○' : '';
+        })
+
+        return {
+          question: question,
+          ...candidateAnswer
+        }
+      })
+
       return {
         candidates: candidates,
         ideaAnswers: ideaAnswers,
         policyAnswers: policyAnswers,
+        primaryAnswers: primaryAnswers,
       }
     }
   }
@@ -97,10 +144,16 @@
 
 <style scoped lang="scss">
   .candidate-answers {
+    margin: 30px 0 0;
     padding-left: 15px;
   }
 
   .el-table {
+    margin-bottom: 60px;
+  }
+
+  .back-top {
+    text-align: center;
     margin-bottom: 60px;
   }
 </style>

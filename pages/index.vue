@@ -4,7 +4,7 @@
 
     <div class="head-description">
       <h3>アンケートに答えると、<br>あなたと立候補者の意見の一致度がわかります！</h3>
-      <el-button type="success" plain @click="dialogVisible = true">ボートマッチとは？</el-button>
+      <el-button type="danger" plain @click="dialogVisible = true">ボートマッチとは？</el-button>
       <sns-share-buttons title="title" />
       <what-vote-match v-model="dialogVisible" />
     </div>
@@ -223,11 +223,12 @@
   .container {
     margin: 0 auto 30px;
     padding: 0 15px;
+    max-width: 480px;
   }
 
   .head-description {
     text-align: center;
-    margin-bottom: 45px;
+    margin: 30px 0 45px;
 
     h3 {
       font-size: 15px;
@@ -241,6 +242,7 @@
   h4 {
     margin-bottom: 16px;
     color: $primary-text;
+    border-bottom: solid 1px;
   }
 
   .area-question-radio, .policy-question {

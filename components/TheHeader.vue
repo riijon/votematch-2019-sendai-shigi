@@ -1,7 +1,7 @@
 <template>
   <header>
     <h2>
-      SENDAI VOTE MATCH 2019
+      SENDAI VOTE MATCH 2019 <img src="/images/favicon.svg" alt="vote">
     </h2>
   </header>
 </template>
@@ -12,13 +12,25 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  header {
+    background-color: #2196F3;
+    padding: 15px 0;
+  }
+
   h2 {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 300;
-    font-size: 42px;
-    color: #526488;
+    font-size: 16px;
+    text-align: center;
+    color: #0D47A1;
     word-spacing: 5px;
-    padding-bottom: 15px;
+    padding: 25px;
+    background-color: #F5F3F3;
+
+    img {
+      width: 20px;
+      vertical-align: bottom;
+    }
   }
 </style>

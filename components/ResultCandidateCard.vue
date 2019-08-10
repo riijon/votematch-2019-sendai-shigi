@@ -90,7 +90,9 @@
   }
 
   ul {
-    padding-left: 12px;
+    @include mq() {
+      padding-left: 12px;
+    }
 
     li {
       color: #606266;
@@ -136,7 +138,7 @@
 
 <style scoped>
   .el-progress >>> .el-progress__text {
-    font-size: 28px!important;
+    font-size: 28px !important;
   }
 
   .el-progress >>> .el-progress-bar {

@@ -1,7 +1,7 @@
 <template>
   <div id="result">
     <p>あなたにオススメの候補者は...</p>
-    <el-row>
+    <el-row :gutter="5">
       <el-col
         v-for="(candidate, index) in displayCandidates"
         :key="candidates.id"
@@ -13,6 +13,7 @@
     <el-row
       class="more-candidates"
       :class="{ all: viewAll }"
+      v-if="moreCandidates.length"
     >
       <el-button type="primary" plain @click="viewAll = true">全ての候補者を見る</el-button>
       <el-col
@@ -114,6 +115,7 @@
 
   section.end {
     text-align: center;
+    margin-bottom: 30px;
   }
 
   .share {
@@ -132,6 +134,5 @@
   .returnTop {
     font-weight: bold;
     font-size: 12px;
-    margin-bottom: 15px;
   }
 </style>
