@@ -11,6 +11,7 @@
       </el-col>
     </el-row>
     <el-row
+      :gutter="5"
       class="more-candidates"
       :class="{ all: viewAll }"
       v-if="moreCandidates.length"
@@ -27,6 +28,7 @@
     <section class="end">
       <div class="share">
         <p>仙台市議選2019ボートマッチをシェアして、<br>選挙をもっと盛り上げよう！</p>
+        <make-share-ogp />
       </div>
       <div class="caution">
         <p>診断は機械的なものなので、意外な結果になるかもしれません。また、無回答を選んだ設問がある候補者はマッチ率が低く表示される傾向があります。</p>
@@ -40,10 +42,12 @@
 <script>
   import ResultCandidateCard from "./ResultCandidateCard";
   import SnsShareButtons from "./SnsShareButtons";
+  import MakeShareOgp from "./MakeShareOgp";
+  import SnsSample from "./SnsSample";
 
   export default {
     name: "Result",
-    components: {SnsShareButtons, ResultCandidateCard},
+    components: {SnsSample, MakeShareOgp, SnsShareButtons, ResultCandidateCard},
     data() {
       return {
         firstDisplayCandidates: 5,

@@ -14,7 +14,7 @@ export default {
       { hid: 'description', name: 'description', content: '仙台市議選ボートマッチ2019は、有権者（あなた）と立候補者の双方に同内容のアンケートに答えてもらい、政策についての考えのマッチ率（一致度）を測定することができるインターネットサービスです。' },
       { hid: 'og:site_name', property: 'og:site_name', content: '仙台市議選ボートマッチ2019' },
       { hid: 'og:type', property: 'og:type', content: 'website' },
-      { hid: 'og:url', property: 'og:url', content: 'https://example.com' },
+      { hid: 'og:url', property: 'og:url', content: 'http://mediage.org/votematch/sendaishigi-2019' },
       { hid: 'og:title', property: 'og:title', content: '仙台市議選ボートマッチ2019' },
       { hid: 'og:description', property: 'og:description', content: '仙台市議選ボートマッチ2019は、有権者（あなた）と立候補者の双方に同内容のアンケートに答えてもらい、政策についての考えのマッチ率（一致度）を測定することができるインターネットサービスです。' },
       { hid: 'og:image', property: 'og:image', content: 'https://example.com/img/ogp/common.jpg' },
