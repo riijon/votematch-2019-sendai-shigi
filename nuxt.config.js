@@ -55,7 +55,6 @@ export default {
   modules: [
     '@nuxtjs/style-resources',
     'nuxt-webfontloader',
-    'nuxt-basic-auth-module',
     'vue-scrollto/nuxt',
     ['nuxt-fontawesome', {
       imports: [
@@ -66,11 +65,6 @@ export default {
       ]
     }],
   ],
-
-  basic: {
-    name: 'coffee',
-    pass: 'house',
-  },
 
   styleResources: {
     // your settings here

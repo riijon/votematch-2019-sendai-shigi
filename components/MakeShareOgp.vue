@@ -605,7 +605,9 @@ FDU6KihqdFRQ1OiooanRUUNToqKGp0fpQ1Oj9KGp0fv7/9k=" transform="matrix(0.36 0 0 0.3
 </g>
 </svg>
 
-    <el-button type="info" @click="create">create</el-button>
+    <a :href="`http://twitter.com/share?url=https://us-central1-votematch-2019-sendai-shigi.cloudfunctions.net/s/${uuid}&text=あなたのマッチ度１位は${result[1].name}さんでした！&via=mediage_info&related=mediage_info`" target="_blank">
+      <el-button type="primary" round>結果をツイートする</el-button>
+    </a>
   </div>
 </template>
 
@@ -645,7 +647,7 @@ FDU6KihqdFRQ1OiooanRUUNToqKGp0fpQ1Oj9KGp0fv7/9k=" transform="matrix(0.36 0 0 0.3
       },
       uuid: {
         type: String,
-        required: false
+        required: true
       }
     },
     methods: {
@@ -668,10 +670,19 @@ FDU6KihqdFRQ1OiooanRUUNToqKGp0fpQ1Oj9KGp0fv7/9k=" transform="matrix(0.36 0 0 0.3
           })
         })
       },
+    },
+    mounted() {
+      setTimeout(this.create(), 3000)
     }
   }
 </script>
 
 <style scoped lang="scss">
-  //
+  .make-share-ogp {
+    text-align: center;
+  }
+
+  .el-button {
+    margin: 15px auto;
+  }
 </style>

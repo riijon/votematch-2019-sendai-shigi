@@ -56,7 +56,7 @@
     </div>
 
     <make-share-ogp
-      v-if="result.length > 0"
+      v-if="!!ogpId"
       :result="result"
       :uuid="ogpId"
     />
