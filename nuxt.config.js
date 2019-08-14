@@ -55,7 +55,7 @@ export default {
   modules: [
     '@nuxtjs/style-resources',
     'nuxt-webfontloader',
-    // 'nuxt-basic-auth-module',
+    'nuxt-basic-auth-module',
     'vue-scrollto/nuxt',
     ['nuxt-fontawesome', {
       imports: [
