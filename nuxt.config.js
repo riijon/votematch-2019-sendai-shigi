@@ -1,5 +1,9 @@
 export default {
   mode: 'universal',
+
+  router: {
+    base: '/votematch/sendaishigi-2019'
+  },
   /*
   ** Headers of the page
   */
@@ -24,7 +28,7 @@ export default {
       { name: 'twitter:site', content: '@mediage_info' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/votematch/sendaishigi-2019/favicon.ico' }
     ]
   },
   /*

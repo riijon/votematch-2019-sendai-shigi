@@ -17,7 +17,23 @@
 
 <script>
   export default {
-    name: "SnsShareButtons"
+    name: "SnsShareButtons",
+    data() {
+      return {
+        defaultUrl: 'https://votematch-2019-sendai-shigi.firebaseapp.com/'
+      }
+    },
+    props: {
+      ogpId: {
+        type: String,
+        required: false
+      },
+    },
+    computed: {
+      url() {
+        return !!this.ogpId ? 'https://us-central1-votematch-2019-sendai-shigi.cloudfunctions.net/s/' + this.ogpId : this.defaultUrl;
+      }
+    },
   }
 </script>
 

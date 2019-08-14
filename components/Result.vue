@@ -28,7 +28,6 @@
     <section class="end">
       <div class="share">
         <p>仙台市議選2019ボートマッチをシェアして、<br>選挙をもっと盛り上げよう！</p>
-        <make-share-ogp />
       </div>
       <div class="caution">
         <p>診断は機械的なものなので、意外な結果になるかもしれません。また、無回答を選んだ設問がある候補者はマッチ率が低く表示される傾向があります。</p>
@@ -43,11 +42,10 @@
   import ResultCandidateCard from "./ResultCandidateCard";
   import SnsShareButtons from "./SnsShareButtons";
   import MakeShareOgp from "./MakeShareOgp";
-  import SnsSample from "./SnsSample";
 
   export default {
     name: "Result",
-    components: {SnsSample, MakeShareOgp, SnsShareButtons, ResultCandidateCard},
+    components: {MakeShareOgp, SnsShareButtons, ResultCandidateCard},
     data() {
       return {
         firstDisplayCandidates: 5,
@@ -59,6 +57,10 @@
         type: Array,
         required: true
       },
+      ogpId: {
+        type: String,
+        required: false
+      }
     },
     computed: {
       displayCandidates() {

@@ -40,7 +40,7 @@
     <div class="check">
       <el-button type="primary" :loading="loading" @click="check">診断する</el-button>
       <ul class="errors">
-        <li v-if="error" v-for="error in validationErrors" :key="error">{{error}}</li>
+        <li v-show="error" v-for="error in validationErrors" :key="error">{{error}}</li>
       </ul>
       <div>
         <nuxt-link :to="{ name: 'candidate-answers' }">診断せずに候補者の回答を見る</nuxt-link>
@@ -48,10 +48,18 @@
     </div>
 
     <div>
-      <result :candidates="result" v-if="result.length"/>
+      <result
+        v-if="result.length"
+        :candidates="result"
+        :ogp-id="ogpId"
+      />
     </div>
 
-    <sns-share-buttons title="title" />
+    <make-share-ogp
+      v-if="result.length > 0"
+      :result="result"
+      :uuid="ogpId"
+    />
   </div>
 </template>
 
@@ -63,9 +71,12 @@
   import Result from "../components/Result";
   import SnsShareButtons from "../components/SnsShareButtons";
   import WhatVoteMatch from "../components/WhatVoteMatch";
+  import MakeShareOgp from "../components/MakeShareOgp";
 
   export default {
-    components: {WhatVoteMatch, SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
+    components: {
+      MakeShareOgp,
+      WhatVoteMatch, SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
     head: {
       titleTemplate: null,
       title: '仙台市議選ボートマッチ2019',
@@ -93,7 +104,8 @@
         loading: false,
         result: [],
         isStore: false,
-        checked: false
+        checked: false,
+        ogpId: null,
       }
     },
     asyncData({store}) {
@@ -209,12 +221,21 @@
           area: this.form.area,
           idea: this.form.idea,
           policy: this.form.policy,
-          primary: this.form.primary
+          primary: this.form.primary,
+          createdAt: new Date()
         }
+        console.log(answer)
+
         const answersRef = db.collection('answers')
         if (!this.isStore) {
           answersRef.add(answer)
-          this.isStore = true
+              .then(docRef => {
+                this.ogpId = docRef._key.path.segments[1]
+                this.isStore = true
+              })
+              .catch(error => {
+                console.error("Error adding document: ", error)
+              })
         }
       }
     },
