@@ -590,14 +590,14 @@ FDU6KihqdFRQ1OiooanRUUNToqKGp0fpQ1Oj9KGp0fv7/9k=" transform="matrix(0.36 0 0 0.3
         <text transform="matrix(1 0 0 1 710.0522 274.0625)" class="st1 st3" font-family="sans-serif">{{result[0].rate | percent}}％</text>
 </g>
       <g>
-	<text transform="matrix(1 0 0 1 389.0522 368.5625)" class="st1 st2">{{result[1].name}}</text>
-        <text transform="matrix(1 0 0 1 710.0522 368.5625)" class="st1 st3">{{result[1].rate | percent}}％</text>
+	<text transform="matrix(1 0 0 1 389.0522 368.5625)" class="st1 st2" font-family="sans-serif">{{result[1].name}}</text>
+        <text transform="matrix(1 0 0 1 710.0522 368.5625)" class="st1 st3" font-family="sans-serif">{{result[1].rate | percent}}％</text>
 </g>
       <g>
-	<text transform="matrix(1 0 0 1 389.0522 463.0625)" class="st1 st2">{{result[2].name}}</text>
-        <text transform="matrix(1 0 0 1 710.0522 463.0625)" class="st1 st3">{{result[2].rate | percent}}％</text>
+	<text transform="matrix(1 0 0 1 389.0522 463.0625)" class="st1 st2" font-family="sans-serif">{{result[2].name}}</text>
+        <text transform="matrix(1 0 0 1 710.0522 463.0625)" class="st1 st3" font-family="sans-serif">{{result[2].rate | percent}}％</text>
 </g>
-      <text transform="matrix(1 0 0 1 713 195.2168)" class="st1 st4">マッチ度</text>
+      <text transform="matrix(1 0 0 1 713 195.2168)" class="st1 st4" font-family="sans-serif">マッチ度</text>
       <text transform="matrix(1 0 0 1 360.3513 125.1487)" class="st5 st6 st2">SENDAI VOTE MATCH 2019</text>
       <g>
 	<path class="st5" d="M872.3,126.1l28.9-12.4l-28.9-12.4v9.6l20.6,2.8l-20.6,2.8V126.1z"/>
