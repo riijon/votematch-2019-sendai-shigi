@@ -3,13 +3,13 @@ import 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCOJtzcgmbehcAFkZfeQTTG6rcno7AH83U",
-  authDomain: "votematch-2019-sendai-shigi.firebaseapp.com",
-  databaseURL: "https://votematch-2019-sendai-shigi.firebaseio.com",
-  projectId: "votematch-2019-sendai-shigi",
-  storageBucket: "votematch-2019-sendai-shigi.appspot.com",
-  messagingSenderId: "221375159269",
-  appId: "1:221375159269:web:439d3e9ed1dfe94a"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
 };
 // Initialize Firebase
 if (!firebase.apps.length) {

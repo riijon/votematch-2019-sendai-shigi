@@ -139,6 +139,8 @@
             return b.rate - a.rate
           })
 
+          this.$ga.event('vote-match', '回答', this.form.area, this.result[0].name)
+
           this.store()
           this.checked = true
           setTimeout(this.scrollToResult, 800)
@@ -224,7 +226,6 @@
           primary: this.form.primary,
           createdAt: new Date()
         }
-        console.log(answer)
 
         const answersRef = db.collection('answers')
         if (!this.isStore) {

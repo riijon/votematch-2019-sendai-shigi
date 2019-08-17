@@ -50,7 +50,7 @@ async function generateSignedUrl (bucketName, filename) {
   return url
 }
 
-const url = 'http://mediage.org/votematch/sen2019'
+const url = 'https://mediage.org/votematch/sen2019'
 const site_name = '仙台市議選ボートマッチ2019'
 const title = '仙台市議選ボートマッチ2019'
 const meta_description = '仙台市議選ボートマッチ2019は、有権者（あなた）と立候補者の双方に同内容のアンケートに答えてもらい、政策についての考えのマッチ率（一致度）を測定することができるインターネットサービスです。'
@@ -91,7 +91,7 @@ const genHtml = (url) => `
   <body>
     <script>
       // クローラーにはメタタグを解釈させて、人間は任意のページに飛ばす
-      location.href = 'http://mediage.org/votematch/sen2019/';
+      location.href = 'https://mediage.org/votematch/sen2019/';
     </script>
   </body>
 </html>

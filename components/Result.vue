@@ -33,7 +33,7 @@
         <p>診断は機械的なものなので、意外な結果になるかもしれません。また、無回答を選んだ設問がある候補者はマッチ率が低く表示される傾向があります。</p>
         <p>表示された数字だけを参考にするのではなく、各候補者の主張に関心を持つ入り口にしていただたら、幸いです！</p>
       </div>
-      <a class="returnTop" href="http://mediage.org/">メディアージのトップに戻る</a>
+      <a class="returnTop" href="https://mediage.org/">メディアージのトップに戻る</a>
     </section>
   </div>
 </template>
