@@ -2,7 +2,7 @@
   <header>
     <nuxt-link :to="{ name: 'index' }">
       <h2>
-        SENDAI VOTE MATCH 2019 <img src="/votematch/sendaishigi-2019/images/favicon.svg" alt="vote">
+        SENDAI VOTE MATCH 2019 <img src="/votematch/sen2019/images/favicon.svg" alt="vote">
       </h2>
     </nuxt-link>
   </header>

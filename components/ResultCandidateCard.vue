@@ -4,7 +4,7 @@
       <el-col :xs="8" class="image">
         <span>{{ranking}}</span>
         <el-image
-          :src="'/votematch/sendaishigi-2019/images/candidates/' + candidate.image"
+          :src="'/votematch/sen2019/images/candidates/' + candidate.image"
         ></el-image>
       </el-col>
       <el-col :xs="16">

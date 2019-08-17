@@ -1,4 +1,4 @@
-AuthUserfile /home/mediage/mediage.org/public_html/votematch/sendaishigi-2019/.htpasswd
+AuthUserfile /home/mediage/mediage.org/public_html/votematch/sen2019/.htpasswd
 AuthGroupfile /dev/null
 AuthName "Please enter your ID and password"
 AuthType Basic
