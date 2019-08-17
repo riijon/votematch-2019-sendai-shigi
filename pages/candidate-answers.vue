@@ -19,7 +19,7 @@
           :prop="candidate.id.toString()"
           :label="candidate.name"
           align="center"
-          width="100">
+          width="150">
         </el-table-column>
       </el-table>
     </template>
@@ -42,7 +42,7 @@
           :prop="candidate.id.toString()"
           :label="candidate.name"
           align="center"
-          width="100">
+          width="150">
         </el-table-column>
       </el-table>
     </template>
@@ -98,6 +98,17 @@
           return candidateAnswer
         })
 
+        // 補足
+        const comments = {
+          question: '補足',
+        }
+
+        candidates.map(candidate => {
+          comments[`${candidate.id}`] = candidate[`Q1-${questionsIndex + 1}`];
+        })
+
+        candidateAnswers.push(comments)
+
         return {
           title: question.title,
           candidateAnswers: candidateAnswers
@@ -115,6 +126,17 @@
           })
           return candidateAnswer
         })
+
+        // 補足
+        const comments = {
+          question: '補足',
+        }
+
+        candidates.map(candidate => {
+          comments[`${candidate.id}`] = candidate[`Q2-${questionsIndex + 1}`];
+        })
+
+        candidateAnswers.push(comments)
 
         return {
           title: question.title,
