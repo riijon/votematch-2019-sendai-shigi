@@ -5,8 +5,10 @@
     <div class="head-description">
       <h3>アンケートに答えると、<br>あなたと立候補者の意見の一致度がわかります！</h3>
       <el-button type="danger" plain @click="dialogVisible = true">ボートマッチとは？</el-button>
+      <el-button type="info" plain @click="dialogVisible2 = true">候補者のアンケート回答状況</el-button>
       <sns-share-buttons title="title" />
       <what-vote-match v-model="dialogVisible" />
+      <answer-situation v-model="dialogVisible2" />
     </div>
 
     <h4>◯ 最初に、あなたの選挙区を選んでください</h4>
@@ -72,9 +74,11 @@
   import SnsShareButtons from "../components/SnsShareButtons";
   import WhatVoteMatch from "../components/WhatVoteMatch";
   import MakeShareOgp from "../components/MakeShareOgp";
+  import AnswerSituation from "../components/AnswerSituation";
 
   export default {
     components: {
+      AnswerSituation,
       MakeShareOgp,
       WhatVoteMatch, SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
     head: {
@@ -92,6 +96,7 @@
     data() {
       return {
         dialogVisible: false,
+        dialogVisible2: false,
         questions: [],
         candidates: [],
         form: {
