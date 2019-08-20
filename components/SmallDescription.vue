@@ -1,5 +1,7 @@
 <template>
-  <p class="small-description"><slot></slot></p>
+  <p class="small-description">
+    <slot></slot>
+  </p>
 </template>
 
 <script>
@@ -9,7 +11,7 @@
 </script>
 
 <style scoped lang="scss">
-  p {
+  .small-description {
     font-size: 10px;
     margin-bottom: 16px;
     color: $secondary-text;

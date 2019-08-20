@@ -26,6 +26,13 @@
       </el-col>
     </el-row>
     <section class="end">
+      <div class="360">
+        <a href="http://tohoku360.com/sendai-shigisen-2019/">
+          <img src="/votematch/sen2019/images/shigisen-768x402.png" alt="仙台市議選特集">
+          <p>TOHOKU360では投開票日まで、選挙に役立つ情報を随時更新しています。</p>
+        </a>
+      </div>
+
       <div class="share">
         <p>仙台市議選2019ボートマッチをシェアして、<br>選挙をもっと盛り上げよう！</p>
       </div>
@@ -48,7 +55,7 @@
     components: {MakeShareOgp, SnsShareButtons, ResultCandidateCard},
     data() {
       return {
-        firstDisplayCandidates: 5,
+        firstDisplayCandidates: 6,
         viewAll: false
       }
     },
@@ -121,7 +128,7 @@
 
   section.end {
     text-align: center;
-    margin-bottom: 30px;
+    margin: 45px 0 30px;
   }
 
   .share {
