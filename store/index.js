@@ -12,10 +12,17 @@ export const state = () => ({
   ],
   questions: jsonDataQuestions,
   candidates: jsonDataCandidate,
+  collectionStatus: {
+    all: 69,
+    already: 56,
+    yet: 12,
+    denied: 1,
+  }
 })
 
 export const getters = {
   areas: state => state.areas,
   questions: state => state.questions,
   candidates: state => state.candidates,
+  collectionStatus: state => state.collectionStatus,
 }

@@ -26,7 +26,7 @@
 
 
 
-    <p>全69候補者 中 回答済54名 未回答14名 回答拒否1名</p>
+    <p>全{{collectionStatus.all}}候補者 中 回答済{{collectionStatus.already}}名 未回答{{collectionStatus.yet}}名 回答拒否{{collectionStatus.denied}}名</p>
     <p>本企画に関する問い合わせ先 info@mediage.org</p>
 
     <span slot="footer" class="dialog-footer"><el-button @click="dialogVisible = false">とじる</el-button></span>
@@ -40,6 +40,7 @@
   import wakabayashiku from '~/assets/wakabayashiku.json'
   import taihakuku from '~/assets/taihakuku.json'
   import izumiku from '~/assets/izumiku.json'
+  import {mapGetters} from 'vuex'
 
   export default {
     name: "AnswerSituation",
@@ -60,6 +61,7 @@
       },
     },
     computed: {
+      ...mapGetters(['collectionStatus']),
       dialogVisible: {
         get() {
           return this.value
