@@ -40,7 +40,11 @@
 
     <p>弊団体により恣意的にマッチ率等を操作することは絶対にありません。候補者の回答内容はすべて公開しておりますので、マッチ率は手動でも計算することが可能です。</p>
 
-    <p class="small center m20">企画：NPO法人メディアージ・TOHOKU360<br>制作：NPO法人メディアージ・ゆるてっく仙台</p>
+    <p class="small center m20">
+      企画：NPO法人メディアージ<br>
+      制作：NPO法人メディアージ・ゆるてっく仙台<br>
+      協力：TOHOKU360
+    </p>
 
     <p>本企画に関する問い合わせ先 info@mediage.org</p>
     <span slot="footer" class="dialog-footer"><el-button @click="dialogVisible = false">とじる</el-button></span>

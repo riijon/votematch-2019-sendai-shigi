@@ -1,8 +1,8 @@
-AuthUserfile /home/mediage/mediage.org/public_html/votematch/sen2019/.htpasswd
-AuthGroupfile /dev/null
-AuthName "Please enter your ID and password"
-AuthType Basic
-require valid-user
+#AuthUserfile /home/mediage/mediage.org/public_html/votematch/sen2019/.htpasswd
+#AuthGroupfile /dev/null
+#AuthName "Please enter your ID and password"
+#AuthType Basic
+#require valid-user
 
 RewriteEngine On
 RewriteCond %{HTTPS} off

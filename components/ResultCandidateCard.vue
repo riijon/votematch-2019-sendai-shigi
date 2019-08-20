@@ -1,18 +1,18 @@
 <template>
   <div class="result-candidate-card">
     <el-row>
-      <el-col :xs="8" class="image">
+      <el-col :span="8" :md="24" class="image">
         <span>{{ranking}}</span>
         <el-image
           :src="'/votematch/sen2019/images/candidates/' + candidate.image"
         ></el-image>
       </el-col>
-      <el-col :xs="16">
+      <el-col :span="16" :md="24">
         <ul>
           <li class="party"><span :style="{backgroundColor: partyColor}">{{candidate.party}}</span></li>
           <li class="hurigana">{{candidate.hurigana}}</li>
           <li class="name">{{candidate.name}}</li>
-          <li class="description">{{candidate.description}}</li>
+          <li class="description">会派：{{candidate.group}} | {{candidate.description}}</li>
         </ul>
       </el-col>
     </el-row>
@@ -44,19 +44,28 @@
     computed: {
       partyColor() {
         switch (this.candidate.party) {
-          case '自民':
+          case '自由民主党':
             return '#3CA324'
             break
-          case '立民':
+          case '立憲民主党':
             return '#004097'
             break
-          case '国民':
+          case '国民民主党':
             return '#FABD00'
             break
-          case '国民':
+          case '日本共産党':
             return '#DB001B'
             break
+          case '公明党':
+            return '#F55881'
+            break
+          case '社会民主党':
+            return '#1467aa'
+            break
           case '無所属':
+            return '#7C7C7C'
+            break
+          default:
             return '#7C7C7C'
             break
         }

@@ -24,7 +24,7 @@ export default {
       { hid: 'og:image', property: 'og:image', content: 'https://mediage.org/votematch/sen2019/images/og-image.jpg' },
       // { property: 'article:publisher', content: 'FacebookURL' },
       // { property: 'fb:app_id', content: 'FacebookAppID' },
-      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@mediage_info' },
     ],
     link: [
