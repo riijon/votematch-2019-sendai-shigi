@@ -3,8 +3,10 @@
     <div id="fb-root"></div>
 
     <div class="head-description">
-      <h3>アンケートに答えると、<br>あなたと立候補者の意見の一致度がわかります！</h3>
+      <h3>アンケートに答えると、<br>あなたと候補者の意見の一致度がわかります！</h3>
+      <p><br>令和元年8月25日(日)投開票予定<br>仙台市議会議員一般選挙<br>ボートマッチ</p>
       <el-button type="danger" plain @click="dialogVisible = true">ボートマッチとは？</el-button>
+      <p><br>現時点でアンケートに回答いただいた<br>54名の候補者の方とのマッチ率を測定します。</p>
       <el-button type="info" plain @click="dialogVisible2 = true">候補者のアンケート回答状況</el-button>
       <sns-share-buttons title="title" />
       <what-vote-match v-model="dialogVisible" />
