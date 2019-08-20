@@ -148,4 +148,9 @@
     font-weight: bold;
     font-size: 12px;
   }
+
+  .el-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
 </style>

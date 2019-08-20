@@ -154,4 +154,9 @@
     padding-right: 70px;
     margin-right: -68px;
   }
+
+  .el-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
 </style>
