@@ -20,6 +20,7 @@
     />
 
     <h4>◯ あなたが政治に求める指向・信条についてお聞きします</h4>
+    <small-description>それぞれの設問について、２つの選択肢（文章）のうち、よりご自身の考え方に近いと感じるものを選んでください（完全に一致しなくても、なるべく近い考えを選んでください）。</small-description>
     <policy-question-radio
       v-for="(questionIdea, i) in questions.idea"
       v-model="form.idea[i]"
@@ -28,6 +29,8 @@
     />
 
     <h4>◯ 次に、具体的な政策についてお聞きします</h4>
+    <small-description>仙台市の政策、取り組みに関する質問です。
+      「無回答（わからない）」を選んだ場合、有権者とあなたとのマッチ率が減少する場合がありますので、完全に意見が一致しなくても、なるべく近い考えを選んでください。</small-description>
     <policy-question-radio
       v-for="(questionPolicy, i) in questions.policy"
       v-model="form.policy[i]"
@@ -77,9 +80,11 @@
   import WhatVoteMatch from "../components/WhatVoteMatch";
   import MakeShareOgp from "../components/MakeShareOgp";
   import AnswerSituation from "../components/AnswerSituation";
+  import SmallDescription from "../components/SmallDescription";
 
   export default {
     components: {
+      SmallDescription,
       AnswerSituation,
       MakeShareOgp,
       WhatVoteMatch, SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
@@ -277,7 +282,7 @@
   }
 
   .area-question-radio, .policy-question {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
 
   .check {

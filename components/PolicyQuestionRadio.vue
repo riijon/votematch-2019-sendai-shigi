@@ -1,14 +1,16 @@
 <template>
   <div class="policy-question">
-    <h4 class="title">{{question.title}}</h4>
-    <el-collapse
-      v-model="activeNames"
-      v-if="question.description"
-    >
-      <el-collapse-item title="補足説明を読む" name="1">
-        <div>{{question.description}}</div>
-      </el-collapse-item>
-    </el-collapse>
+    <div class="title">
+      <h4>{{question.title}}</h4>
+      <el-collapse
+        v-model="activeNames"
+        v-if="question.description"
+      >
+        <el-collapse-item title="補足説明を読む" name="1">
+          <div>{{question.description}}</div>
+        </el-collapse-item>
+      </el-collapse>
+    </div>
     <el-radio-group v-model="internalValue">
       <el-radio
         v-for="(answer, i) in question.answers"
@@ -53,12 +55,11 @@
 </script>
 
 <style scoped>
-  .policy-question {
-    margin-bottom: 24px;
-  }
-
   .title {
     margin-bottom: 16px;
+  }
+
+  .title h4 {
     font-size: 16px;
   }
 
@@ -73,7 +74,7 @@
 
   .el-collapse {
     border-top: inherit;
-    margin: -8px 0 10px;
+    margin: 5px 0;
   }
 </style>
 
