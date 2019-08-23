@@ -218,8 +218,8 @@
           }
         }
 
-        if (this.form.primary.length < this.candidates[0].q3.length) {
-          this.validationErrors.push('Q3を全て選択してください')
+        if (this.form.primary.length === 0) {
+          this.validationErrors.push('特に重視する政策を選択してください')
           response = false
         }
 
