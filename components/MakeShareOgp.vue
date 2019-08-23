@@ -612,7 +612,7 @@ FDU6KihqdFRQ1OiooanRUUNToqKGp0fpQ1Oj9KGp0fv7/9k=" transform="matrix(0.36 0 0 0.3
 </template>
 
 <script>
-  import {db, firebase} from '~/plugins/firebase'
+  import {db, storage, firebase} from '~/plugins/firebase'
 
   // svgをpngに変換する関数
   function svg2imageData(svgElement, successCallback, errorCallback) {
@@ -654,7 +654,7 @@ FDU6KihqdFRQ1OiooanRUUNToqKGp0fpQ1Oj9KGp0fv7/9k=" transform="matrix(0.36 0 0 0.3
       create() {
         // refでsvgCardをsvgに設定しているのでthis.$refs.svgCardで要素を取れます
         svg2imageData(this.$refs.svgCard, (data) => {
-          const sRef = firebase.storage().ref()
+          const sRef = storage.ref()
           const fileRef = sRef.child(`${this.uuid}.png`)
 
           // Cloud Storageにアップロード
@@ -662,9 +662,9 @@ FDU6KihqdFRQ1OiooanRUUNToqKGp0fpQ1Oj9KGp0fv7/9k=" transform="matrix(0.36 0 0 0.3
             // Firestoreに保存しておく
             const card = db.collection('cards').doc(this.uuid)
 
-            return card.set({}, {merge: false})
+            return card.set({createdAt: new Date()}, {merge: false})
           }).then(docRef => {
-            console.log(docRef)
+            // console.log(docRef)
           }).catch(err => {
             console.error(err)
           })
