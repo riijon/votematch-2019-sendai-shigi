@@ -89,16 +89,33 @@
 
 <script>
   export default {
-    head: {
-      title: '候補者の回答'
-    },
-
     data() {
       return {
         activeIndex: '1',
         questions: [],
         candidates: [],
         baseCandidates: [],
+        meta: {
+          title: '候補者の回答',
+          description: '候補者の回答を一覧で見れます。',
+          type: 'article',
+          url: 'https://mediage.org/votematch/sen2019/candidate-answers',
+          image: 'https://mediage.org/votematch/sen2019/images/og-image.jpg',
+        },
+      }
+    },
+
+    head () {
+      return {
+        title: this.meta.title,
+        meta: [
+          { hid: 'description', name: 'description', content: this.meta.description },
+          { hid: 'og:type', property: 'og:type', content: this.meta.type },
+          { hid: 'og:title', property: 'og:title', content: this.meta.title + ' - 仙台市議選ボートマッチ2019' },
+          { hid: 'og:description', property: 'og:description', content: this.meta.description },
+          { hid: 'og:url', property: 'og:url', content: this.meta.url },
+          { hid: 'og:image', property: 'og:image', content: this.meta.image },
+        ],
       }
     },
 
