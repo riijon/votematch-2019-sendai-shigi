@@ -2,15 +2,22 @@
   <div class="container">
     <div id="fb-root"></div>
 
+    <a href="https://mediage.org/votematch/miya2019/">
+      <div class="miya2019">
+        <img src="/votematch/sen2019/images/votematch_hp_02_ol.jpg" alt="宮城県議選ボートマッチ">
+        <h3>2019 宮城県議選ボートマッチはこちら</h3>
+      </div>
+    </a>
+
     <div class="head-description">
       <h3>アンケートに答えると、<br>あなたと候補者の意見の一致度がわかります！</h3>
       <p><br>令和元年8月25日(日)投開票予定<br>仙台市議会議員一般選挙<br>ボートマッチ</p>
       <el-button type="danger" plain @click="dialogVisible = true">ボートマッチとは？</el-button>
       <p><br>現時点でアンケートに回答いただいた<br>{{collectionStatus.already}}名の候補者の方とのマッチ率を測定します。</p>
       <el-button type="info" plain @click="dialogVisible2 = true">候補者のアンケート回答状況</el-button>
-      <sns-share-buttons title="title" />
-      <what-vote-match v-model="dialogVisible" />
-      <answer-situation v-model="dialogVisible2" />
+      <sns-share-buttons title="title"/>
+      <what-vote-match v-model="dialogVisible"/>
+      <answer-situation v-model="dialogVisible2"/>
     </div>
 
     <h4>◯ 最初に、あなたの選挙区を選んでください</h4>
@@ -20,7 +27,8 @@
     />
 
     <h4>◯ あなたが政治に求める指向・信条についてお聞きします</h4>
-    <small-description>それぞれの設問について、２つの選択肢（文章）のうち、よりご自身の考え方に近いと感じるものを選んでください（完全に一致しなくても、なるべく近い考えを選んでください）。</small-description>
+    <small-description>それぞれの設問について、２つの選択肢（文章）のうち、よりご自身の考え方に近いと感じるものを選んでください（完全に一致しなくても、なるべく近い考えを選んでください）。
+    </small-description>
     <policy-question-radio
       v-for="(questionIdea, i) in questions.idea"
       v-model="form.idea[i]"
@@ -30,7 +38,8 @@
 
     <h4>◯ 次に、具体的な政策についてお聞きします</h4>
     <small-description>仙台市の政策、取り組みに関する質問です。
-      「無回答（わからない）」を選んだ場合、有権者とあなたとのマッチ率が減少する場合がありますので、完全に意見が一致しなくても、なるべく近い考えを選んでください。</small-description>
+      「無回答（わからない）」を選んだ場合、有権者とあなたとのマッチ率が減少する場合がありますので、完全に意見が一致しなくても、なるべく近い考えを選んでください。
+    </small-description>
     <policy-question-radio
       v-for="(questionPolicy, i) in questions.policy"
       v-model="form.policy[i]"
@@ -87,7 +96,8 @@
       SmallDescription,
       AnswerSituation,
       MakeShareOgp,
-      WhatVoteMatch, SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio},
+      WhatVoteMatch, SnsShareButtons, Result, PrimaryQuestionCheckbox, AreaQuestionRadio, PolicyQuestionRadio
+    },
     head: {
       titleTemplate: null,
       title: '仙台市議選ボートマッチ2019',
@@ -136,9 +146,9 @@
           let result = []
           if (this.form.area === 'わからない、区に関わらず調べたい') {
             result = this.candidates.map(candidate => ({
-                  ...candidate,
-                  rate: this.rating(candidate)
-                }));
+              ...candidate,
+              rate: this.rating(candidate)
+            }));
           } else {
             result = this.candidates.filter(candidate => candidate.area === this.form.area)
                 .map(candidate => ({
@@ -303,5 +313,11 @@
       margin-bottom: 8px;
       color: $danger;
     }
+  }
+
+  .miya2019 {
+    text-align: center;
+    margin: 30px 0;
+    border: solid 3px darkred;
   }
 </style>
