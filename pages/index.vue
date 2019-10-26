@@ -2,12 +2,15 @@
   <div class="container">
     <div id="fb-root"></div>
 
-    <a href="https://mediage.org/votematch/miya2019/">
-      <div class="miya2019">
+    <div class="miya2019">
+      <a href="https://mediage.org/votematch/miya2019/">
         <img src="/votematch/sen2019/images/votematch_hp_02_ol.jpg" alt="宮城県議選ボートマッチ">
-        <h3>2019 宮城県議選ボートマッチはこちら</h3>
+      </a>
+      <div>↑宮城県議選のボートマッチをプレイする方はこちらをクリック<br/>
+        ----------<br/>
+        ↓こちらは2019年8月に行われた仙台市議選のアーカイブです
       </div>
-    </a>
+    </div>
 
     <div class="head-description">
       <h3>アンケートに答えると、<br>あなたと候補者の意見の一致度がわかります！</h3>
@@ -318,6 +321,5 @@
   .miya2019 {
     text-align: center;
     margin: 30px 0;
-    border: solid 3px darkred;
   }
 </style>
