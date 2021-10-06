@@ -179,7 +179,7 @@
 
         count += this.count(this.form.idea, candidate.q1)
         count += this.count(this.form.policy, candidate.q2)
-        count += this.count(this.form.primary, candidate.q3)
+        count += this.countCheckbox(this.form.primary, candidate.q3)
 
         return count / (candidate.q1.length + candidate.q2.length + candidate.q3.length)
       },
@@ -189,6 +189,17 @@
         let count = 0
         for (let i = 0; i < candidateAnswers.length; i++) {
           if (formAnswers[i] === candidateAnswers[i]) {
+            count++
+          }
+        }
+        return count
+      },
+
+      countCheckbox(formAnswers, candidateAnswers) {
+        let count = 0
+        for (let i = 0; i < candidateAnswers.length; i++) {
+          const c = candidateAnswers[i] - 1
+          if (formAnswers.indexOf(c) !== -1) {
             count++
           }
         }
