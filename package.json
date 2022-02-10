@@ -19,7 +19,7 @@
     "@nuxtjs/style-resources": "^0.1.2",
     "element-ui": "^2.4.11",
     "firebase": "^6.3.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "nuxt": "^2.0.0",
     "nuxt-basic-auth-module": "^1.2.0",
     "nuxt-fontawesome": "^0.4.0",
